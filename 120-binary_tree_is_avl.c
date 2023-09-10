@@ -45,7 +45,7 @@ int check_avl_tree(const binary_tree_t *tree, int *prev)
 	left = check_avl_tree(tree->left, prev);
 	if (left == 0)
 		return (0);
-	if (tree->n < (*prev))
+	if (tree->n < (*prev) || tree->n == (*prev))
 		return (0);
 	*prev = tree->n;
 	left_h = binary_tree_height(tree->left);
