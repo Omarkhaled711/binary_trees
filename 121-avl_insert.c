@@ -26,7 +26,6 @@ void avl_rotate(avl_t *tree, int balance, int value)
 		tree->right = binary_tree_rotate_right(tree->right);
 		new_subroot = binary_tree_rotate_left(tree);
 	}
-
 	if (parent != NULL)
 	{
 		new_subroot->parent = parent;
@@ -58,8 +57,8 @@ avl_t *avl_insert(avl_t **tree, int value)
 	{
 		if ((*tree)->left == NULL)
 		{
-			(*tree)->left = binary_tree_node(*tree, value);
-			new_node = (*tree)->left;
+			new_node = binary_tree_node(*tree, value);
+			(*tree)->left = new_node;
 		}
 		else
 			new_node = avl_insert(&((*tree)->left), value);
@@ -68,8 +67,8 @@ avl_t *avl_insert(avl_t **tree, int value)
 	{
 		if ((*tree)->right == NULL)
 		{
-			(*tree)->right = binary_tree_node(*tree, value);
-			new_node = (*tree)->right;
+			new_node = binary_tree_node(*tree, value);
+			(*tree)->right = new_node;
 		}
 		else
 			new_node = avl_insert(&((*tree)->right), value);
